@@ -2,77 +2,12 @@ from player import Player
 from zone_handler import ZoneHandler
 from zone import Zone
 
-import time, os
-
 from colorama import init
 init()
 
 from colorama import Fore, Back, Style
 
-def showTitleScreen():
-    titleFrame1 = '''
-  /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$
- /$$__  $$ /$$$_  $$ /$$__  $$ /$$$_  $$
-|__/  \ $$| $$$$\ $$|__/  \ $$| $$$$\ $$
-  /$$$$$$/| $$ $$ $$  /$$$$$$/| $$ $$ $$
- /$$____/ | $$\ $$$$ /$$____/ | $$\ $$$$
-| $$      | $$ \ $$$| $$      | $$ \ $$$
-| $$$$$$$$|  $$$$$$/| $$$$$$$$|  $$$$$$/
-|________/ \______/ |________/ \______/
-
-'''
-    titleFrame2 = '''
- $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\\
-$$  __$$\ $$$ __$$\ $$  __$$\ $$$ __$$\\
-\__/  $$ |$$$$\ $$ |\__/  $$ |$$$$\ $$ |
- $$$$$$  |$$\$$\$$ | $$$$$$  |$$\$$\$$ |
-$$  ____/ $$ \$$$$ |$$  ____/ $$ \$$$$ |
-$$ |      $$ |\$$$ |$$ |      $$ |\$$$ |
-$$$$$$$$\ \$$$$$$  /$$$$$$$$\ \$$$$$$  /
-\________| \______/ \________| \______/
-'''
-
-    titleFrame3 = '''
-  ______    ______    ______    ______
- /      \  /      \  /      \  /      \\
-|  $$$$$$\|  $$$$$$\|  $$$$$$\|  $$$$$$\\
- \$$__| $$| $$$\| $$ \$$__| $$| $$$\| $$
- /      $$| $$$$\ $$ /      $$| $$$$\ $$
-|  $$$$$$ | $$\$$\$$|  $$$$$$ | $$\$$\$$
-| $$_____ | $$_\$$$$| $$_____ | $$_\$$$$
-| $$     \ \$$  \$$$| $$     \ \$$  \$$$
- \$$$$$$$$  \$$$$$$  \$$$$$$$$  \$$$$$$
-'''
-
-    titleFrame4 = '''
-  ______    ______    ______    ______
- /      \  /      \  /      \  /      \\
-/$$$$$$  |/$$$$$$  |/$$$$$$  |/$$$$$$  |
-$$____$$ |$$$  \$$ |$$____$$ |$$$  \$$ |
- /    $$/ $$$$  $$ | /    $$/ $$$$  $$ |
-/$$$$$$/  $$ $$ $$ |/$$$$$$/  $$ $$ $$ |
-$$ |_____ $$ \$$$$ |$$ |_____ $$ \$$$$ |
-$$       |$$   $$$/ $$       |$$   $$$/
-$$$$$$$$/  $$$$$$/  $$$$$$$$/  $$$$$$/
-
-'''
-    startTime = time.time()   #Tempo de inicio
-    currentTime = time.time() #Tempo atual
-    counterFrame = 0
-    while(currentTime < startTime + 4.0):
-        if(counterFrame % 4 == 0):
-            print(titleFrame1)
-        elif(counterFrame % 4 == 1):
-            print(titleFrame2)
-        elif(counterFrame % 4 == 2):
-            print(titleFrame3)
-        else:
-            print(titleFrame4)
-
-        time.sleep(0.2)
-        counterFrame += 1
-        os.system("cls")
-        currentTime = time.time()
+from titleScreen import showTitleScreen
 
 def startGame(player, global_map):
     #cria grafo do mapa inicial
@@ -101,7 +36,7 @@ def startGame(player, global_map):
     print("Ao olhar seu celular, você percebe que estamos em " + Fore.RED + "31 de dezembro de 2020." + Style.RESET_ALL)
 
 def main():
-    #showTitleScreen()
+    showTitleScreen()
     p = Player()
     global_map = ZoneHandler()
 
